@@ -296,7 +296,7 @@ on boot
     setprop ro.mvp.features srvc,mvpdaff,grbks,vpncrt,vpn,mvpdsec,wtp
 
     # SONY: Enable Sony RIC
-    mount securityfs securityfs /sys/kernel/security nosuid nodev noexec
+    # mount securityfs securityfs /sys/kernel/security nosuid nodev noexec
 
     # Change reset behavior to warm reset
     
@@ -448,11 +448,14 @@ on property:init.taimport.ready=true
     start config-linker
 
 # Start RIC
-service ric /sbin/ric
-    user root
-    group root drmrpc trimarea system
-    class main
-    seclabel u:r:ric:s0
+# service ric /sbin/ric
+#    user root
+#    group root drmrpc trimarea system
+#    class main
+#    seclabel u:r:ric:s0
+
+     write /sys/kernel/security/sony_ric/enable 0 
+     write /sys/fs/selinux/enforce 0
 
 # VMware MVP Hypervisor daemon
 service mvpd /system/bin/mvpd -F -a 14
