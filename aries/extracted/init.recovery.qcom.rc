@@ -1,0 +1,5 @@
+service tad /sbin/fota-tad /dev/block/platform/msm_sdcc.1/by-name/TA 0,16
+    user tad
+    group tad root
+    socket tad stream 0660 system trimarea
+    seclabel u:r:tad:s0
