@@ -11,3 +11,5 @@ You can extract and compress a ramdisk in many ways, but here's what I've found 
 3. Extract the ramdisk (usually sec1-xxx) using `cat ../sec1-0x02000000.bin | gzip -d | cpio -i --make-directories`
 
 4. Make your changes and compress with `mkbootfs DIR | gzip -n -f > ramdisk.img`
+
+If you're working with a concept boot image, you can easily replace steps 2 and 3 with simply using unpackbootimg.
